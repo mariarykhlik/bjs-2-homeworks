@@ -79,12 +79,16 @@ class Library {
     }
 
     findBookBy(type, value) {
-        for (const book of this.books) {
-            if (book.hasOwnProperty(type) && book[type] === value) {
-                return book;
-            }
+        // for (const book of this.books) {
+        //     if (book.hasOwnProperty(type) && book[type] === value) {
+        //         return book;
+        //     }
+        // }
+        let index = this.books.findIndex((book) => book[type] === value);
+        if (index < 0) {
+            return null;
         }
-        return null;
+        return this.books[index];
     }
 
     giveBookByName(bookName) {
